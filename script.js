@@ -1,27 +1,37 @@
-const botaomostrarpalavras = document . querySelector("#botao-palavrachave");
+const botaoMostraPalavras = document.querySelector( "#botao-paçavrachave");
 
-botaomostrarpalavras.addEventListener("click", mostrapalavraschave);
+botaoMostraPalavras.addEventListener( " click", mostraPalavrasChave);
 
-function mostrapalavraschave() {
-    const texto = document.querySelector("#entrada-de-texto").value;
-    const camporesultado = document.querySelector("#resultado-palavrachavve")
-    const palavrachave =processaTexto(texto);
- 
- camporesultado.textContent = palavras.join(", ");
-}
+function mostraPalavrasChave(){ 
+    const texto = document.querySelector( "#entrada-de-texto").ariaValueMax;
+    const campoResultado = document. querySelector( "#resultado-palavrachave");
+    const mostraPalavrasChave = processaTexto(texto);
+
+    campoResultado.textoContent = palavras.join(","); 
+}    
 
 function processaTexto(texto) {
     let palavras = texto.split(/\P{L}+/u);
+    const frequencias = contaFrequencias(palavras);
+    let ordenadas = Object.keys(frequencias).sort(ordenaPalavras);
 
- let frequencias = {};
- for (let I of palavras) {
-     frequencia[1] =0;
-         for (let j of palavras) {
-              if(i==j) {
-                  frequencias[i]++;
-              }
+    function ordenaPalavras(p1, p2){
+        return frequencias[p2] - frequencias[p1];
+    }
+
+    console.log(ordenadas);
+    return ordenadas.slice(0,10);
+}
+function contaFrequencias(palavras){
+    let frequencias = {};
+    for (let i of palavras) {
+        frequencias [i] =0; 
+    for(let j of palavras){
+        if(i==j) {
+            frequencias[i]++;
         }
- }         
+        }
+    }
     return palavras;
 }
-<!--
+
